@@ -113,17 +113,28 @@ BinarySearchTree.prototype.search = function(data) {
 };
 
 BinarySearchTree.prototype.goRound = function() {
-    let current = this.root;
+    let current;
+    const searched = [],
+          queue = [this.root];
+    
+        while (queue[0] !== undefined) {
+            current = queue.pop();
+            searched.push(current.data);
 
-    while (current.left.left) {
-        current = current.left;
-    }
+            if (current.right) {
+                queue.push(current.right);
+            }
+            if (current.left) {
+                queue.push(current.left);
+            }
+        }
 
-  
+    return searched;
 };
 
 const bst = new BinarySearchTree();
 bst.add(8).add(3).add(10).add(1).add(6).add(4).add(7).add(10).add(14).add(13);
-bst.search(7);
-bst.remove(3);
+// bst.search(7);
+// bst.remove(3);
+// bst.goRound();
 console.log(bst);
