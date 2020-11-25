@@ -22,6 +22,7 @@ BinarySearchTree.prototype.add = function(data) {
     while (current) {
         if (node.data < current.data) {
             if (!current.left) {
+                //лишние отступы, должны быть одинаковые с break;
                     current.left = node;
                 break;
             }
@@ -91,7 +92,7 @@ BinarySearchTree.prototype.remove = function(data) {
         }
     }
     console.log("Value wasn't founded.");
-
+//extra empty line
 };
 
 BinarySearchTree.prototype.search = function(data) {

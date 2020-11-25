@@ -40,6 +40,8 @@ function searchPath(map, init, aim) {
             if(node === aim) {
                 return writePath(path, init, aim);
             } else {
+                //Очень большая вложеность лучше этот кусок вынести в отдельный метод и тут вызывать
+                //Это улучшит читабельность кода
                 queue = queue.concat(map[node]);
                 for(let i = 0; i < map[node].length; i++) {
                     if(!(map[node][i] in path)) {

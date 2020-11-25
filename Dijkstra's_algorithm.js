@@ -34,6 +34,7 @@ const graph = {
         d: undefined,
         end: undefined
     };
+    //лишний отступ
     let processed = [],
         neibors = [];
 
@@ -52,6 +53,7 @@ function findCheapestNode() {
 
 function newCosts(cheapestNode) {
     for(let node in neibors) {
+        //neiGbors missing letter
         if(costs[cheapestNode] + neibors[node] < costs[node]) {
             costs[node] = costs[cheapestNode] + neibors[node];
             parents[node] = cheapestNode;
@@ -60,6 +62,12 @@ function newCosts(cheapestNode) {
 }
 
 function writePath(parents, init, aim) {
+    //Лучше используй let для каждой переменной отдельно
+    //Это по гайдлайинам(док описывающий правила оформления кода) гугла пункт 5.1.2
+    //https://google.github.io/styleguide/jsguide.html#file-name
+    //И я тоже почти не встречаю такой записи в проектах, ошибки не будет но так редко пишут
+    //let item = aim;
+    //let path = [aim];
     let item = aim,
         path = [aim];
     
@@ -72,6 +80,7 @@ function writePath(parents, init, aim) {
 
 function searchPath (map) {
     let cheapestNode = findCheapestNode();
+    //you can write while(cheapestNode) {
     while(cheapestNode != undefined) {
         neibors = map[cheapestNode];
         newCosts(cheapestNode);
