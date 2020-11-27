@@ -115,17 +115,17 @@ BinarySearchTree.prototype.search = function(data) {
 BinarySearchTree.prototype.goRound = function() {
     let current;
     const searched = [],
-          queue = [this.root];
+          stack = [this.root];
     
-        while (queue[0] !== undefined) {
-            current = queue.pop();
+        while (stack[0] !== undefined) {
+            current = stack.pop();
             searched.push(current.data);
 
             if (current.right) {
-                queue.push(current.right);
+                stack.push(current.right);
             }
             if (current.left) {
-                queue.push(current.left);
+                stack.push(current.left);
             }
         }
 
