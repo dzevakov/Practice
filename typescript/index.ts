@@ -1,3 +1,6 @@
+//1) npm install
+//2) ts-node index.ts
+
 /**
  * Класс Создатель объявляет фабричный метод, который должен возвращать объект
  * класса Продукт. Подклассы Создателя обычно предоставляют реализацию этого
@@ -58,11 +61,39 @@ class ConcreteCreator2 extends Creator {
 interface Product {
   operation(): string;
 }
+interface Product2 {
+  operation(): string;
+}
+
+abstract class SortableCreator {
+  public abstract sort(): void;
+
+  public operation(): string {
+    return "xxx";
+  }
+}
+
+class CustomCreator extends SortableCreator implements ISortable {
+  public sort(): void {}
+}
+
+interface ISortable {
+  sort(): void;
+  operation(): string;
+}
+
+class NewHashtable extends SortableCreator {
+  public sort(): void {}
+}
+
+function sortData(collection: ISortable) {
+  collection.sort();
+}
 
 /**
  * Конкретные Продукты предоставляют различные реализации интерфейса Продукта.
  */
-class ConcreteProduct1 implements Product {
+class ConcreteProduct1 implements Product, Product2 {
   public operation(): string {
     return "{Result of the AAAA}";
   }
@@ -85,6 +116,15 @@ function clientCode(creator: Creator) {
     "Client: I'm not aware of the creator's class, but it still works."
   );
   console.log(creator.someOperation());
+  // ...
+}
+
+function testInerface(test: Product) {
+  // ...
+  console.log(
+    "Client: I'm not aware of the creator's class, but it still works."
+  );
+  console.log(test.operation());
   // ...
 }
 
