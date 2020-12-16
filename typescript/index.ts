@@ -61,39 +61,39 @@ class ConcreteCreator2 extends Creator {
 interface Product {
   operation(): string;
 }
-interface Product2 {
-  operation(): string;
-}
+// interface Product2 {
+//   operation(): string;
+// }
 
-abstract class SortableCreator {
-  public abstract sort(): void;
+// abstract class SortableCreator {
+//   public abstract sort(): void;
 
-  public operation(): string {
-    return "xxx";
-  }
-}
+//   public operation(): string {
+//     return "xxx";
+//   }
+// }
 
-class CustomCreator extends SortableCreator implements ISortable {
-  public sort(): void {}
-}
+// class CustomCreator extends SortableCreator implements ISortable {
+//   public sort(): void {}
+// }
 
-interface ISortable {
-  sort(): void;
-  operation(): string;
-}
+// interface ISortable {
+//   sort(): void;
+//   operation(): string;
+// }
 
-class NewHashtable extends SortableCreator {
-  public sort(): void {}
-}
+// class NewHashtable extends SortableCreator {
+//   public sort(): void {}
+// }
 
-function sortData(collection: ISortable) {
-  collection.sort();
-}
+// function sortData(collection: ISortable) {
+//   collection.sort();
+// }
 
 /**
  * Конкретные Продукты предоставляют различные реализации интерфейса Продукта.
  */
-class ConcreteProduct1 implements Product, Product2 {
+class ConcreteProduct1 implements Product {
   public operation(): string {
     return "{Result of the AAAA}";
   }
