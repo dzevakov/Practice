@@ -8,7 +8,7 @@ class Home {
   }
 
   public static getInstance(adress: string) {
-    if (Home.instance === null) {
+    if (Home.instance === undefined) {
       Home.instance = new Home(adress);
     }
     return Home.instance;
@@ -28,3 +28,7 @@ function test() {
 }
 
 test();
+
+// const firstHome = Home.getInstance("Mogilev, Gorki st., 15");
+// const secondHome = Home.getInstance("Minsk, Joki st., 2");
+// console.log(firstHome.getAdress(), secondHome.getAdress());
